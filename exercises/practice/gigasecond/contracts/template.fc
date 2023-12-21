@@ -1,0 +1,27 @@
+#include "imports/stdlib.fc";
+
+forall X -> (tuple) to_tuple(X x) asm "NOP";
+int one_giga() asm "1000000000 PUSHINT";
+
+() recv_internal(int my_balance, int msg_value, cell in_msg_full, slice in_msg_body) impure {
+    ;; do not code in this block
+}
+
+;; you need to consider leap years and different number of days in each month 
+int is_leap_year(int year){
+    
+}
+
+;; convert (year, month, day, hour, minute, second) to seconds
+int to_second(int year, int month, int day, int hour, int minute, int second) {
+    
+}
+
+;; convert seconds to (year, month, day, hour, minute, second)
+(int, int, int, int, int, int) from_second(int passed_seconds) {
+    
+}
+
+(int, int, int, int, int, int) giga_second(int year, int month, int day, int hour, int minute, int second) method_id {
+    
+}
