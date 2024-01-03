@@ -6,7 +6,7 @@
       "contracts/template.fc"
     ],
     "test": [
-      "tests/Template.spec"
+      "tests/Template.spec.ts"
     ],
     "example": [
       ".meta/example.fc"
