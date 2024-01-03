@@ -3,20 +3,8 @@
 int error::target_cannot_be_negative() asm "101 PUSHINT"; ;; must be used in throw for edge cases
 int error::cannot_make_target_with_given_coins() asm "102 PUSHINT"; ;; must be used in throw for edge cases
 
-(int) tlen (tuple t) asm "TLEN";
-
 () recv_internal(int my_balance, int msg_value, cell in_msg_full, slice in_msg_body) impure {
     ;; do not code in this block
-}
-
-;; optional: create a tuple which size=(int size) and all the values equal to (int value)
-tuple unify_array(int size, int value) {
-    
-}
-
-;; optional: change an element of a tuple
-tuple change_element(tuple t, int position, int value){
-    
 }
 
 tuple find_fewest_coins(tuple coins, int target) method_id {

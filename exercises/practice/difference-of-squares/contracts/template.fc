@@ -4,15 +4,6 @@
     ;; do not code in this block
 }
 
-;; you can use pure math formula
-int square_of_sum(int number) method_id {
-    
-}
-
-int sum_of_squares(int number) method_id {
-    
-}
-
 int difference_of_squares(int number) method_id {
     
 }

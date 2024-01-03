@@ -1,14 +1,7 @@
 #include "imports/stdlib.fc";
 
-(int) tlen (tuple t) asm "TLEN";
-
 () recv_internal(int my_balance, int msg_value, cell in_msg_full, slice in_msg_body) impure {
     ;; do not code in this block
-}
-
-;; add an element to tuple if it doesn't exist
-tuple add_if_not_exist(tuple t, int value){
-    
 }
 
 int is_isogram(slice string) method_id {

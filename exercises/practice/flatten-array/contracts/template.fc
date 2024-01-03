@@ -1,18 +1,7 @@
 #include "imports/stdlib.fc";
 
-int tlen(tuple t) asm "TLEN";
-forall X -> int is_tuple(X x) asm "ISTUPLE";
-forall X -> int is_null(X x) asm "ISNULL";
-
 () recv_internal(int my_balance, int msg_value, cell in_msg_full, slice in_msg_body) impure {
     ;; do not code in this block
-}
-
-;; optional - this function must join two tuples in one tuple
-;; but you can implement it in the flatten function 
-;; but make sure to remove this function
-tuple merge_tuple(tuple t1, tuple t2) {
-    
 }
 
 tuple flatten(tuple nested_list) method_id {
