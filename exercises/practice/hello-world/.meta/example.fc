@@ -1,0 +1,11 @@
+#include "imports/stdlib.fc";
+
+() recv_internal(int my_balance, int msg_value, cell in_msg_full, slice in_msg_body) impure {
+  ;; do not code in this block
+}
+
+;; only one get method, which you can call even from your DAPP
+(slice) hello_world() method_id {
+  ;;87521618088882671231069284 is an integer representation of the phrase "Hello world", because strings are hard in Func
+  return begin_cell().store_uint(87521618088882671231069284, 88).end_cell().begin_parse();
+}
