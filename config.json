@@ -101,7 +101,8 @@
   "concepts": [],
   "key_features": [],
   "tags": [
-    "paradigm/logic",
+    "paradigm/imperative",
+    "paradigm/functional",
     "typing/static",
     "execution_mode/compiled",
     "platform/windows",

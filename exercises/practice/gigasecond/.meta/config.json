@@ -1,5 +1,7 @@
 {
-  "authors": ["alirezatabatabaeian"],
+  "authors": [
+    "alirezatabatabaeian"
+  ],
   "contributors": [],
   "files": {
     "solution": [
@@ -10,6 +12,12 @@
     ],
     "example": [
       ".meta/example.fc"
+    ],
+    "editor": [
+      "contracts/imports/stdlib.fc"
+    ],
+    "invalidator": [
+      "package.json"
     ]
   },
   "blurb": "Given a moment, determine the moment that would be after a gigasecond has passed.",

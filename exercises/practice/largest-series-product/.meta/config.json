@@ -12,6 +12,12 @@
     ],
     "example": [
       ".meta/example.fc"
+    ],
+    "editor": [
+      "contracts/imports/stdlib.fc"
+    ],
+    "invalidator": [
+      "package.json"
     ]
   },
   "blurb": "Given a string of digits, calculate the largest product for a contiguous substring of digits of length n.",

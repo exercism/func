@@ -12,6 +12,12 @@
     ],
     "example": [
       ".meta/example.fc"
+    ],
+    "editor": [
+      "contracts/imports/stdlib.fc"
+    ],
+    "invalidator": [
+      "package.json"
     ]
   },
   "blurb": "Implement a binary search algorithm.",

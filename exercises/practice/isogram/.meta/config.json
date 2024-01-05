@@ -12,6 +12,12 @@
     ],
     "example": [
       ".meta/example.fc"
+    ],
+    "editor": [
+      "contracts/imports/stdlib.fc"
+    ],
+    "invalidator": [
+      "package.json"
     ]
   },
   "blurb": "Determine if a word or phrase is an isogram.",

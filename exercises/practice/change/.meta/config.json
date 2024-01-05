@@ -12,6 +12,12 @@
     ],
     "example": [
       ".meta/example.fc"
+    ],
+    "editor": [
+      "contracts/imports/stdlib.fc"
+    ],
+    "invalidator": [
+      "package.json"
     ]
   },
   "blurb": "Correctly determine change to be given using the least number of coins.",
