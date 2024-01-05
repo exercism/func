@@ -16,10 +16,21 @@
     "highlightjs_language": "TODO: specify highlightjs language"
   },
   "files": {
-    "solution": [],
-    "test": [],
-    "example": [],
-    "exemplar": []
+    "solution": [
+      "contracts/template.fc"
+    ],
+    "test": [
+      "tests/Template.spec.ts"
+    ],
+    "example": [
+      ".meta/example.fc"
+    ],
+    "editor": [
+      "contracts/imports/stdlib.fc"
+    ],
+    "invalidator": [
+      "package.json"
+    ]
   },
   "exercises": {
     "concept": [],
