@@ -1,0 +1,26 @@
+{
+  "authors": [
+    "chakzefir"
+  ],
+  "contributors": [],
+  "files": {
+    "solution": [
+      "contracts/template.fc"
+    ],
+    "test": [
+      "tests/Template.spec.ts"
+    ],
+    "example": [
+      ".meta/example.fc"
+    ],
+    "editor": [
+      "contracts/imports/stdlib.fc"
+    ],
+    "invalidator": [
+      "package.json"
+    ]
+  },
+  "blurb": "Exercism's classic introductory exercise. Just say \"Hello, World!\".",
+  "source": "This is an exercise to introduce users to using Exercism",
+  "source_url": "https://en.wikipedia.org/wiki/%22Hello,_world!%22_program"
+}

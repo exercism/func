@@ -1,0 +1,11 @@
+#include "imports/stdlib.fc";
+
+() recv_internal(int my_balance, int msg_value, cell in_msg_full, slice in_msg_body) impure {
+
+}
+
+int is_armstrong_number(int number) method_id {
+    ;; if the number is an armstrong number, return -1 
+    ;; otherwise, return 0
+    
+}

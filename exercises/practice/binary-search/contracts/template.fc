@@ -1,0 +1,11 @@
+#include "imports/stdlib.fc";
+
+() recv_internal(int my_balance, int msg_value, cell in_msg_full, slice in_msg_body) impure {
+    ;; do not code in this block
+}
+
+;; search_list values must be in order
+;; if found, return index of the value from the search_list, otherwise return -1
+int binary_search(tuple search_list, int value) method_id {
+    ;; write your code here
+}
