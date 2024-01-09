@@ -28,7 +28,7 @@ export class Template implements Contract {
     }
 
     async getHelloWorld(provider: ContractProvider) {
-        const result = await provider.get('hello_world', [])
-        return result.stack.readString()
+        const result = await provider.get('hello_world', []);
+        return result.stack.readBigNumber();
     }
 }
