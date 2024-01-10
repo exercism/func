@@ -16,16 +16,109 @@
     "highlightjs_language": "TODO: specify highlightjs language"
   },
   "files": {
-    "solution": [],
-    "test": [],
-    "example": [],
-    "exemplar": []
+    "solution": [
+      "contracts/template.fc"
+    ],
+    "test": [
+      "tests/Template.spec.ts"
+    ],
+    "example": [
+      ".meta/example.fc"
+    ],
+    "editor": [
+      "contracts/imports/stdlib.fc"
+    ],
+    "invalidator": [
+      "package.json"
+    ]
   },
   "exercises": {
     "concept": [],
-    "practice": []
+    "practice": [
+      {
+        "slug": "hello-world",
+        "name": "Hello, World!",
+        "uuid": "6c88f46b-5acb-4fae-a6ec-b48ae3f8168f",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 1
+      },
+      {
+        "slug": "armstrong-numbers",
+        "name": "Armstrong Numbers",
+        "uuid": "d9ceb246-b518-42b9-9fa3-112e25c7ecd8",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 1
+      },
+      {
+        "slug": "binary-search",
+        "name": "Binary Search",
+        "uuid": "a8288e93-93c5-4e0f-896c-2a376f6f6e5e",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 1
+      },
+      {
+        "slug": "change",
+        "name": "Change",
+        "uuid": "889df88a-767d-490f-92c4-552d8ec9de34",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 4
+      },
+      {
+        "slug": "difference-of-squares",
+        "name": "Difference of Squares",
+        "uuid": "913b6099-d75a-4c27-8243-476081752c31",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 1
+      },
+      {
+        "slug": "flatten-array",
+        "name": "Flatten Array",
+        "uuid": "07481204-fe88-4aa2-995e-d40d1ae15070",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 1
+      },
+      {
+        "slug": "gigasecond",
+        "name": "Gigasecond",
+        "uuid": "22606e91-57f3-44cf-ab2d-94f6ee6402e8",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 1
+      },
+      {
+        "slug": "isogram",
+        "name": "Isogram",
+        "uuid": "d1a98c79-d3cc-4035-baab-0e334d2b6a57",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 1
+      },
+      {
+        "slug": "largest-series-product",
+        "name": "Largest Series Product",
+        "uuid": "21624a3e-6e43-4c0e-94b0-dee5cdaaf2aa",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 4
+      }
+    ]
   },
   "concepts": [],
   "key_features": [],
-  "tags": []
+  "tags": [
+    "paradigm/imperative",
+    "paradigm/functional",
+    "typing/static",
+    "execution_mode/compiled",
+    "platform/windows",
+    "platform/mac",
+    "platform/linux",
+    "used_for/financial_systems"
+  ]
 }

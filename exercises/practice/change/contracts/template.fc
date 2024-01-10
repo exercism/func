@@ -1,0 +1,12 @@
+#include "imports/stdlib.fc";
+
+int error::target_cannot_be_negative() asm "101 PUSHINT"; ;; must be used in throw for edge cases
+int error::cannot_make_target_with_given_coins() asm "102 PUSHINT"; ;; must be used in throw for edge cases
+
+() recv_internal(int my_balance, int msg_value, cell in_msg_full, slice in_msg_body) impure {
+    ;; do not code in this block
+}
+
+tuple find_fewest_coins(tuple coins, int target) method_id {
+    
+}

@@ -1,0 +1,26 @@
+{
+  "authors": [
+    "alirezatabatabaeian"
+  ],
+  "contributors": [],
+  "files": {
+    "solution": [
+      "contracts/template.fc"
+    ],
+    "test": [
+      "tests/Template.spec.ts"
+    ],
+    "example": [
+      ".meta/example.fc"
+    ],
+    "editor": [
+      "contracts/imports/stdlib.fc"
+    ],
+    "invalidator": [
+      "package.json"
+    ]
+  },
+  "blurb": "Implement a binary search algorithm.",
+  "source": "Wikipedia",
+  "source_url": "https://en.wikipedia.org/wiki/Binary_search_algorithm"
+}
