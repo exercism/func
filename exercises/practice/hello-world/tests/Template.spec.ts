@@ -32,7 +32,7 @@ describe('Template', () => {
     });
 
     it('should return hello world', async () => {
-        expect(await template.getHelloWorld()).toStrictEqual(22405534230753928650781647905n);
+        expect(await template.getHelloWorld()).toStrictEqual(5735816763073854918203775149089n);
         
     });
 });

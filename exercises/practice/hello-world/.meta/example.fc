@@ -5,6 +5,5 @@
 }
 
 (int) hello_world() method_id {
-  ;; you should return "Hello World!"u
-  return "Hello World!"u;
+  return "Hello, World!"u;
 }
