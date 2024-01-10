@@ -3,6 +3,7 @@ import { Cell, toNano } from 'ton-core';
 import { Template } from '../wrappers/Template';
 import '@ton-community/test-utils';
 import { compile } from '@ton-community/blueprint';
+import { log } from 'console';
 
 describe('Template', () => {
     let code: Cell;
@@ -31,8 +32,27 @@ describe('Template', () => {
         });
     });
 
+    function string2BigInt(string: String) {
+        let binStr = string.split('').map(function (char) {
+            let binary_string: string = char.charCodeAt(0).toString(2);
+            while (binary_string.length < 8) {
+                binary_string = "0" + binary_string;
+            }
+            return binary_string;
+        }).join('');
+
+        const lastIndex = binStr.length - 1;
+        let total = BigInt(0);
+        for (let i = 0; i < binStr.length; i++) {
+            if (binStr[lastIndex - i] === '1') {
+                total += (BigInt(2) ** BigInt(i));
+            }
+        }
+
+        return total;
+    }
+
     it('should return hello world', async () => {
-        expect(await template.getHelloWorld()).toStrictEqual(5735816763073854918203775149089n);
-        
+        expect(await template.getHelloWorld()).toStrictEqual(string2BigInt("Hello, World!"));
     });
 });
