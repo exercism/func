@@ -1,0 +1,80 @@
+#include "imports/stdlib.fc";
+
+;; storage: account_state + owner_address
+;; note that account_state is an 8 bits signed integer variable to lock/unlock the account: lock: 0, unlock: -1
+
+;; op codes(32 bits):
+;; lock_account: 300
+;; unlock_account: 400
+;; deposit: 500
+;; withdraw: 600
+
+;; withdraw message body -> coins + receiver
+;; withdraw send message mode: 1
+
+;; exit codes:
+;; only owner access: 250
+;; already_locked: 260
+;; already_unlock: 270
+;; if withdrawal_amount >= balance: 280
+
+;; get methods:
+;; 1- get_account_state()
+;; 2- get_balance -> in nanoTON
+
+() recv_internal(int my_balance, int msg_value, cell in_msg_full, slice in_msg_body) impure {
+        if(in_msg_body.slice_bits() < 32){ ;; do not change it for deployment
+        return ();
+    }
+
+    slice ds = get_data().begin_parse();
+    (int account_state, slice owner) = (ds~load_int(8), ds~load_msg_addr());
+
+    slice cs = in_msg_full.begin_parse();
+    cs~skip_bits(4);
+    slice sender_address = cs~load_msg_addr();
+    int op = in_msg_body~load_uint(32);
+
+    if(op == 300) {
+        throw_unless(250, equal_slices(sender_address, owner));
+        throw_if(260, account_state == 0);
+        account_state = 0;
+        set_data(begin_cell().store_int(account_state, 8).store_slice(owner).end_cell());
+        return();
+    }
+
+    if(op == 400) {
+        throw_unless(250, equal_slices(sender_address, owner));
+        throw_if(270, account_state == -1);
+        account_state = -1;
+        set_data(begin_cell().store_int(account_state, 8).store_slice(owner).end_cell());
+        return();
+    }
+
+    if(op == 500) {
+        throw_if(260, account_state == 0);
+        return ();
+    }
+
+    if(op == 600) {
+        throw_unless(250, equal_slices(sender_address, owner));
+        throw_if(260, account_state == 0);
+        int withdrawal_amount = in_msg_body~load_coins();
+        slice receiver = in_msg_body~load_msg_addr();
+        throw_unless(280, withdrawal_amount < my_balance);
+        send_raw_message(begin_cell().store_uint(0x18, 6).store_slice(receiver).store_coins(withdrawal_amount).store_uint(0, 1 + 4 + 4 + 64 + 32 + 1 + 1).end_cell(), 1);
+        set_data(begin_cell().store_int(account_state, 8).store_slice(owner).end_cell());
+        return();
+    }
+}
+
+(int) get_account_state() method_id {
+    slice ds = get_data().begin_parse();
+    (int account_state, slice owner) = (ds~load_int(8), ds~load_msg_addr());
+    return account_state;
+}
+
+(int) my_balance() method_id {
+    [int balance, _] = get_balance();
+    return balance;
+}

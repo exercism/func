@@ -1,0 +1,125 @@
+#include "imports/stdlib.fc";
+
+;; write a function for each op-code which throws the corresponding exit-code!
+;; only 10 most important and more useful exit codes are covered here
+;; more information on exit codes can be found in the below links:
+;; 1- https://docs.ton.org/learn/tvm-instructions/tvm-exit-codes
+;; 2- https://docs.ton.org/develop/smart-contracts/testing/writing-test-examples#edge-cases-tests
+;; 3- https://github.com/ton-community/fireworks-func/blob/main/contracts/fireworks.fc
+
+;; use ~impure_touch() to force the compiler to not delete an unused variable from the stack
+
+() exit_code_4() impure {
+    int integer_overflow = 1;
+    repeat(256) {
+        integer_overflow = 2 * integer_overflow;
+    }
+}
+
+() exit_code_5() impure {
+    cell invalid_cell = begin_cell().store_uint(-1, 1).end_cell();
+    invalid_cell~impure_touch();
+}
+
+() exit_code_8() impure {
+    cell cell_overflow = begin_cell().store_uint(0, 256).store_uint(0, 256).store_uint(0, 256).store_uint(0, 256).end_cell();
+    cell_overflow~impure_touch();
+}
+
+() exit_code_9() impure {
+    int cell_underflow = begin_cell().end_cell().begin_parse().preload_uint(1);
+    cell_underflow~impure_touch();
+}
+
+() exit_code_13() impure {
+    int out_of_gas = 0;
+    repeat(3000) {
+        out_of_gas += 10;
+    }
+}
+
+() exit_code_34() impure {
+    send_raw_message(begin_cell().end_cell(), 0);
+}
+
+() exit_code_35() impure {
+    cell send_msg = begin_cell()
+    .store_uint(6, 4)
+    .store_slice("Ef8zMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzM0vF"a) ;; source address must be zero or my address
+    .store_slice("EQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAM9c"a) ;; destination address
+    .store_coins(100)
+    .store_uint(0, 1 + 4 + 4 + 64 + 32 + 1 + 1)
+    .end_cell();
+    send_raw_message(send_msg, 0);
+}
+
+() exit_code_36() impure {
+    cell send_msg = begin_cell()
+    .store_uint(0x18, 6)
+    .store_uint(3, 2) ;; 11 -> MsgAddressInt
+    .store_uint(2, 8) ;; 1 -> workchain (not existing)
+    .store_uint(0, 256) ;; data part
+    .store_coins(100)
+    .store_uint(0, 1 + 4 + 4 + 64 + 32 + 1 + 1)
+    .end_cell();
+    send_raw_message(send_msg, 0);
+}
+
+() exit_code_37() impure {
+    cell send_msg = begin_cell()
+    .store_uint(0x18, 6)
+    .store_slice(my_address())
+    .store_coins(1000000000000) ;; 1000 TON
+    .store_uint(0, 1 + 4 + 4 + 64 + 32 + 1 + 1)
+    .end_cell();
+    send_raw_message(send_msg, 0);
+}
+
+() recv_internal(int my_balance, int msg_value, cell in_msg_full, slice in_msg_body) impure {
+    if(in_msg_body.slice_bits() == 0){ ;; don't change it in order to deploy the contract truly
+        return ();
+    }
+
+    int exit_code = in_msg_body~load_uint(32);
+
+    if(exit_code == 0) {
+        ;; just a simple return
+        return();
+    }
+
+    if(exit_code == 4) {
+        exit_code_4();
+    }
+
+    if(exit_code == 5) {
+        exit_code_5();
+    }
+
+    if(exit_code == 8) {
+        exit_code_8();
+    }
+
+    if(exit_code == 9) {
+        exit_code_9();
+    }
+
+    if(exit_code == 13) {
+        exit_code_13();
+    }
+
+    if(exit_code == 34) {
+        exit_code_34();
+    }
+
+    if(exit_code == 35) {
+        exit_code_35();
+    }
+
+    if(exit_code == 36) {
+        exit_code_36();
+    }
+
+    if(exit_code == 37) {
+        exit_code_37();
+    }
+}

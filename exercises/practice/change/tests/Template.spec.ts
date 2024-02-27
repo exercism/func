@@ -76,8 +76,10 @@ describe('Template', () => {
                 if (match) {
                     expect(parseInt(match[0])).toBe(102)
                 }
+                return true;
             }
         }
+        throw(1);
     });
 
     xit('test error if no combination can add up to target', async () => {
@@ -89,8 +91,10 @@ describe('Template', () => {
                 if (match) {
                     expect(parseInt(match[0])).toBe(102)
                 }
+                return true;
             }
         }
+        throw(1);
     });
 
     xit('test cannot find negative change values', async () => {
@@ -102,7 +106,9 @@ describe('Template', () => {
                 if (match) {
                     expect(parseInt(match[0])).toBe(101)
                 }
+                return true;
             }
         }
+        throw(1);
     });
 });

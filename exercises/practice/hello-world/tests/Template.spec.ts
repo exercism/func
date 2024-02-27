@@ -53,6 +53,6 @@ describe('Template', () => {
     }
 
     it('should return hello world', async () => {
-        expect(await template.getHelloWorld()).toStrictEqual(string2BigInt("Hello, World!"));
+        expect(await template.getHelloWorld()).toStrictEqual("Hello, World!");
     });
 });
