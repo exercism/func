@@ -52,6 +52,14 @@
         "difficulty": 1
       },
       {
+        "slug": "bank-account",
+        "name": "Bank Account",
+        "uuid": "83a3ff95-c043-401c-bc2c-547d52344b02",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 6
+      },
+      {
         "slug": "binary-search",
         "name": "Binary Search",
         "uuid": "a8288e93-93c5-4e0f-896c-2a376f6f6e5e",
@@ -76,12 +84,28 @@
         "difficulty": 1
       },
       {
+        "slug": "error-handling",
+        "name": "Error Handling",
+        "uuid": "0dac0feb-e1c8-497e-9a1b-e96e0523eea6",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 3
+      },
+      {
         "slug": "flatten-array",
         "name": "Flatten Array",
         "uuid": "07481204-fe88-4aa2-995e-d40d1ae15070",
         "practices": [],
         "prerequisites": [],
         "difficulty": 1
+      },
+      {
+        "slug": "forth",
+        "name": "Forth",
+        "uuid": "14e1dfe3-a45c-40c1-bf61-2e4f0cca5579",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 5
       },
       {
         "slug": "gigasecond",

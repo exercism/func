@@ -55,7 +55,7 @@ describe('Template', () => {
         });
     });
 
-    it('exit code = 4', async () => {
+    xit('exit code = 4', async () => {
         const deployer = await blockchain.treasury('deployer');
         const exitCodeResult = await template.sendExitCode(deployer.getSender(), ExitCode.IntegerOverflow);
         expect(exitCodeResult.transactions).toHaveTransaction({
@@ -66,7 +66,7 @@ describe('Template', () => {
         });
     });
 
-    it('exit code = 5', async () => {
+    xit('exit code = 5', async () => {
         const deployer = await blockchain.treasury('deployer');
         const exitCodeResult = await template.sendExitCode(deployer.getSender(), ExitCode.IntegerOutOfRange);
         expect(exitCodeResult.transactions).toHaveTransaction({
@@ -77,7 +77,7 @@ describe('Template', () => {
         });
     });
 
-    it('exit code = 8', async () => {
+    xit('exit code = 8', async () => {
         const deployer = await blockchain.treasury('deployer');
         const exitCodeResult = await template.sendExitCode(deployer.getSender(), ExitCode.CellOverflow);
         expect(exitCodeResult.transactions).toHaveTransaction({
@@ -88,7 +88,7 @@ describe('Template', () => {
         });
     });
 
-    it('exit code = 9', async () => {
+    xit('exit code = 9', async () => {
         const deployer = await blockchain.treasury('deployer');
         const exitCodeResult = await template.sendExitCode(deployer.getSender(), ExitCode.CellUnderflow);
         expect(exitCodeResult.transactions).toHaveTransaction({
@@ -99,7 +99,7 @@ describe('Template', () => {
         });
     });
 
-    it('exit code = 13', async () => {
+    xit('exit code = 13', async () => {
         const deployer = await blockchain.treasury('deployer');
         const exitCodeResult = await template.sendExitCode(deployer.getSender(), ExitCode.OutOfGasError);
         expect(exitCodeResult.transactions).toHaveTransaction({
@@ -110,7 +110,7 @@ describe('Template', () => {
         });
     });
 
-    it('exit code = 34', async () => {
+    xit('exit code = 34', async () => {
         const deployer = await blockchain.treasury('deployer');
         const exitCodeResult = await template.sendExitCode(deployer.getSender(), ExitCode.ActionInvalid);
         expect(exitCodeResult.transactions).toHaveTransaction({
@@ -121,7 +121,7 @@ describe('Template', () => {
         });
     });
 
-    it('exit code = 35', async () => {
+    xit('exit code = 35', async () => {
         const deployer = await blockchain.treasury('deployer');
         const exitCodeResult = await template.sendExitCode(deployer.getSender(), ExitCode.InvalidSourceAddress);
         expect(exitCodeResult.transactions).toHaveTransaction({
@@ -132,7 +132,7 @@ describe('Template', () => {
         });
     });
 
-    it('exit code = 36', async () => {
+    xit('exit code = 36', async () => {
         const deployer = await blockchain.treasury('deployer');
         const exitCodeResult = await template.sendExitCode(deployer.getSender(), ExitCode.InvalidDestinationAddress);
         expect(exitCodeResult.transactions).toHaveTransaction({
@@ -143,7 +143,7 @@ describe('Template', () => {
         });
     });
 
-    it('exit code = 37', async () => {
+    xit('exit code = 37', async () => {
         const deployer = await blockchain.treasury('deployer');
         const exitCodeResult = await template.sendExitCode(deployer.getSender(), ExitCode.NotEnoughTON);
         expect(exitCodeResult.transactions).toHaveTransaction({

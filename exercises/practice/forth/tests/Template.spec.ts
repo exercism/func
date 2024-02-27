@@ -36,82 +36,82 @@ describe('Template', () => {
         expect(await template.get_evaluate(elements)).toEqual([1, 2, 3])
     });
 
-    it('return negative numbers', async () => {
+    xit('return negative numbers', async () => {
         const elements: (string | number)[] = [-1, -2, -3];
         expect(await template.get_evaluate(elements)).toEqual([-1, -2, -3])
     });
 
-    it('add two positive numbers', async () => {
+    xit('add two positive numbers', async () => {
         const elements: (string | number)[] = [1, 2, '+'];
         expect(await template.get_evaluate(elements)).toEqual([3])
     });
 
-    it('add one positive and one negative numbers', async () => {
+    xit('add one positive and one negative numbers', async () => {
         const elements: (string | number)[] = [1, -2, '+'];
         expect(await template.get_evaluate(elements)).toEqual([-1])
     });
 
-    it('add two negative numbers', async () => {
+    xit('add two negative numbers', async () => {
         const elements: (string | number)[] = [-1, -2, '+'];
         expect(await template.get_evaluate(elements)).toEqual([-3])
     });
 
-    it('subtract two positive numbers', async () => {
+    xit('subtract two positive numbers', async () => {
         const elements: (string | number)[] = [1, 2, '-'];
         expect(await template.get_evaluate(elements)).toEqual([-1])
     });
 
-    it('subtract one positive and one negative numbers', async () => {
+    xit('subtract one positive and one negative numbers', async () => {
         const elements: (string | number)[] = [1, -2, '-'];
         expect(await template.get_evaluate(elements)).toEqual([3])
     });
 
-    it('subtract two negative numbers', async () => {
+    xit('subtract two negative numbers', async () => {
         const elements: (string | number)[] = [-1, -2, '-'];
         expect(await template.get_evaluate(elements)).toEqual([1])
     });
 
-    it('multiply two positive numbers', async () => {
+    xit('multiply two positive numbers', async () => {
         const elements: (string | number)[] = [1, 2, '*'];
         expect(await template.get_evaluate(elements)).toEqual([2])
     });
 
-    it('multiply one positive and one negative numbers', async () => {
+    xit('multiply one positive and one negative numbers', async () => {
         const elements: (string | number)[] = [1, -2, '*'];
         expect(await template.get_evaluate(elements)).toEqual([-2])
     });
 
-    it('multiply two negative numbers', async () => {
+    xit('multiply two negative numbers', async () => {
         const elements: (string | number)[] = [-1, -2, '*'];
         expect(await template.get_evaluate(elements)).toEqual([2])
     });
 
-    it('multiply two big numbers', async () => {
+    xit('multiply two big numbers', async () => {
         const elements: (string | number)[] = [200, 100, '*'];
         expect(await template.get_evaluate(elements)).toEqual([20000])
     });
 
-    it('divide two positive numbers', async () => {
+    xit('divide two positive numbers', async () => {
         const elements: (string | number)[] = [1, 2, '/'];
         expect(await template.get_evaluate(elements)).toEqual([0])
     });
 
-    it('divide one positive and one negative numbers', async () => {
+    xit('divide one positive and one negative numbers', async () => {
         const elements: (string | number)[] = [-1, 2, '/'];
         expect(await template.get_evaluate(elements)).toEqual([-1])
     });
 
-    it('divide two negative numbers', async () => {
+    xit('divide two negative numbers', async () => {
         const elements: (string | number)[] = [-1, -2, '/'];
         expect(await template.get_evaluate(elements)).toEqual([0])
     });
 
-    it('divide two big numbers', async () => {
+    xit('divide two big numbers', async () => {
         const elements: (string | number)[] = [200, 100, '/'];
         expect(await template.get_evaluate(elements)).toEqual([2])
     });
 
-    it('divide by zero', async () => {
+    xit('divide by zero', async () => {
         const elements: (string | number)[] = [1, 0, '/'];
         try {
             await template.get_evaluate(elements);
@@ -121,62 +121,62 @@ describe('Template', () => {
         throw('You must throw an error for division by zero!')
     });
 
-    it('sum and sub combination', async () => {
+    xit('sum and sub combination', async () => {
         const elements: (string | number)[] = [1, 2, '+', 4, '-'];
         expect(await template.get_evaluate(elements)).toEqual([-1])
     });
 
-    it('mul and div combination', async () => {
+    xit('mul and div combination', async () => {
         const elements: (string | number)[] = [2, 4, '*', 3, '/'];
         expect(await template.get_evaluate(elements)).toEqual([2])
     });
 
-    it('dup one', async () => {
+    xit('dup one', async () => {
         const elements: (string | number)[] = [1, 'dup'];
         expect(await template.get_evaluate(elements)).toEqual([1, 1])
     });
 
-    it('dup two', async () => {
+    xit('dup two', async () => {
         const elements: (string | number)[] = [1, 2, 'dup'];
         expect(await template.get_evaluate(elements)).toEqual([1, 2, 2])
     });
 
-    it('two dup', async () => {
+    xit('two dup', async () => {
         const elements: (string | number)[] = [1, 'dup', 2, 'dup'];
         expect(await template.get_evaluate(elements)).toEqual([1, 1, 2, 2])
     });
 
-    it('drop', async () => {
+    xit('drop', async () => {
         const elements: (string | number)[] = [1, 'drop'];
         expect(await template.get_evaluate(elements)).toEqual([])
     });
 
-    it('drop drop', async () => {
+    xit('drop drop', async () => {
         const elements: (string | number)[] = [1, 2, 'drop', 'drop'];
         expect(await template.get_evaluate(elements)).toEqual([])
     });
 
-    it('swap two', async () => {
+    xit('swap two', async () => {
         const elements: (string | number)[] = [1, 2, 'swap'];
         expect(await template.get_evaluate(elements)).toEqual([2, 1])
     });
 
-    it('swap three', async () => {
+    xit('swap three', async () => {
         const elements: (string | number)[] = [1, 2, 3, 'swap'];
         expect(await template.get_evaluate(elements)).toEqual([1, 3, 2])
     });
 
-    it('over', async () => {
+    xit('over', async () => {
         const elements: (string | number)[] = [1, 2, 'over'];
         expect(await template.get_evaluate(elements)).toEqual([1, 2, 1])
     });
 
-    it('over over', async () => {
+    xit('over over', async () => {
         const elements: (string | number)[] = [1, 2, 3, 'over'];
         expect(await template.get_evaluate(elements)).toEqual([1, 2, 3, 2])
     });
 
-    it('dup drop swap over ', async () => {
+    xit('dup drop swap over ', async () => {
         const elements: (string | number)[] = [1, 2, 'dup', 'drop', 'swap', 'over'];
         expect(await template.get_evaluate(elements)).toEqual([2, 1, 2])
     });
