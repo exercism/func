@@ -1,0 +1,74 @@
+#include "imports/stdlib.fc";
+
+;; you can use tuple as a stack so that you avoid fift and asm stack related op codes
+
+(int) tlen(tuple t) asm "TLEN";
+forall X -> int is_int(X x) asm "<{ TRY:<{ 0 PUSHINT ADD DROP -1 PUSHINT }>CATCH<{ 2DROP 0 PUSHINT }> }>CONT 1 1 CALLXARGS";
+forall X -> (tuple, X) ~tpop(tuple t) asm "TPOP";
+
+forall X -> (tuple, X) pop_first(tuple old_tuple) {
+    var first = old_tuple.first();
+    tuple new_tuple = empty_tuple();
+    int i = 1;
+    while (i < old_tuple.tlen()) {
+        new_tuple~tpush(old_tuple.at(i));
+        i += 1;  
+    }
+    return (new_tuple, first);
+}
+
+() recv_internal(int my_balance, int msg_value, cell in_msg_full, slice in_msg_body) impure {
+
+}
+
+(tuple) evaluate(tuple number_and_operation) method_id {
+    tuple stack = empty_tuple();
+
+    while(number_and_operation.tlen() > 0) {
+        var word = number_and_operation~pop_first();
+
+        if(is_int(word)) {
+            stack~tpush(word);
+        }
+        elseif(equal_slices(word, "+")) {
+            int second = stack~tpop();
+            int first = stack~tpop();
+            stack~tpush(first + second);
+        }
+        elseif(equal_slices(word, "-")) {
+            int second = stack~tpop();
+            int first = stack~tpop();
+            stack~tpush(first - second);
+        }
+        elseif(equal_slices(word, "*")) {
+            int second = stack~tpop();
+            int first = stack~tpop();
+            stack~tpush(first * second);
+        }
+        elseif(equal_slices(word, "/")) {
+            int divisor = stack~tpop();
+            if (divisor == 0){
+                throw(0x1010);
+            }
+            int dividend = stack~tpop();
+            stack~tpush(dividend / divisor);
+        }
+        elseif(equal_slices(word, "dup")) {
+            stack~tpush(stack.at(stack.tlen() - 1));
+        }
+        elseif(equal_slices(word, "drop")) {
+            stack~tpop();
+        }
+        elseif(equal_slices(word, "swap")) {
+            int first = stack~tpop();
+            int second = stack~tpop();
+            stack~tpush(first);
+            stack~tpush(second);
+        }
+        elseif(equal_slices(word, "over")) {
+            stack~tpush(stack.at(stack.tlen() - 2));
+        }
+    }
+
+    return stack;
+}

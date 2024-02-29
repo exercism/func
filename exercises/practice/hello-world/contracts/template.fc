@@ -4,6 +4,6 @@
   ;; do not code in this block
 }
 
-(int) hello_world() method_id {
-  return "Goodbye, Mars!"u;
+(slice) hello_world() method_id {
+  return "Goodbye, Mars!";
 }

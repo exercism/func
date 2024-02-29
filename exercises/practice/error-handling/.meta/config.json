@@ -1,0 +1,24 @@
+{
+  "authors": [
+    "alirezatabatabaeian"
+  ],
+  "contributors": [],
+  "files": {
+    "solution": [
+      "contracts/template.fc"
+    ],
+    "test": [
+      "tests/Template.spec.ts"
+    ],
+    "example": [
+      ".meta/example.fc"
+    ],
+    "editor": [
+      "contracts/imports/stdlib.fc"
+    ],
+    "invalidator": [
+      "package.json"
+    ]
+  },
+  "blurb": "Implement various kinds of error handling and resource management."
+}

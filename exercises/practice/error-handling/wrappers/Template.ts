@@ -1,4 +1,4 @@
-import { Address, beginCell, Cell, Contract, contractAddress, ContractProvider, Sender, SendMode } from 'ton-core';
+import { Address, beginCell, Cell, Contract, contractAddress, ContractProvider, Sender, SendMode, toNano } from 'ton-core';
 
 export type TemplateConfig = {};
 
@@ -7,7 +7,7 @@ export function templateConfigToCell(config: TemplateConfig): Cell {
 }
 
 export class Template implements Contract {
-    constructor(readonly address: Address, readonly init?: { code: Cell; data: Cell }) { }
+    constructor(readonly address: Address, readonly init?: { code: Cell; data: Cell }) {}
 
     static createFromAddress(address: Address) {
         return new Template(address);
@@ -27,8 +27,11 @@ export class Template implements Contract {
         });
     }
 
-    async getHelloWorld(provider: ContractProvider) {
-        const result = await provider.get('hello_world', []);
-        return result.stack.readString();
+    async sendExitCode(provider: ContractProvider, via: Sender, exitCode: number) {
+        await provider.internal(via, {
+            value: toNano('0.05'),
+            sendMode: SendMode.PAY_GAS_SEPARATELY,
+            body: beginCell().storeUint(exitCode, 32).endCell(),
+        });
     }
 }

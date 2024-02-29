@@ -1,0 +1,9 @@
+#include "imports/stdlib.fc";
+
+() recv_internal(int my_balance, int msg_value, cell in_msg_full, slice in_msg_body) impure {
+}
+
+;; you can use tuple as a stack so that you avoid fift and asm stack related op codes
+(tuple) evaluate(tuple number_and_operation) method_id {
+    
+}
