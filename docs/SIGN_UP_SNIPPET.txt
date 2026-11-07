@@ -1,0 +1,14 @@
+(int, int) most_common_letter(slice text) {
+  cell counts = new_dict();
+  (int best, int best_count) = (0, 0);
+  repeat (text.slice_bits() / 8) {
+    int code = text~load_uint(8);
+    (slice entry, int found?) = counts.udict_get?(8, code);
+    int count = found? ? entry.preload_uint(16) + 1 : 1;
+    counts~udict_set(8, code, begin_cell().store_uint(count, 16).end_cell().begin_parse());
+    if ((code != 32) & (count > best_count)) {
+      (best, best_count) = (code, count);
+    }
+  }
+  return (best, best_count);
+}
